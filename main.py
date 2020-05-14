@@ -1,6 +1,5 @@
 #!usr/bin/env python3
 from random import choice, randint
-
 # This is an attempt to port the Halo monitor name generator at monitors.mradford.com to python
 lnames = [
 'symphony',
