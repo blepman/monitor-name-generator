@@ -346,6 +346,12 @@ fnames = [
 'wicked'
 ]
 
+def generate_name():
+    """ Generates and returns monitor name as string """
+
+    return name
+
+
 
 from bottle import route, run
 @route("/")
@@ -353,32 +359,26 @@ def page():
     num = randint(1, 1000)  # Generate a random number between 1 and 1000.
     fname = choice(fnames).capitalize()  # Pick a random name from fnames.
     lname = choice(lnames).capitalize()  # Pick random name from lnames.
-
-    return f"""<!DOCTYPE html>
+    name = f"{num} {fname} {lname}"
+    return f"""
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style type="text/css">
-        .monitor-name { text-transform: capitalize; }
-        body { background-color: #000; color: #fff; text-align: center; }
-        .muted { color: #2bc7ca; }
-    </style>
-</head>
-<body>
-    <img src="https://www.halopedia.org/images/d/d5/Abject_Testament.jpg" alt="" width="200" height="150">	<h1 class="monitor-name">{num} {fname} {lname}</h1>	<button onclick="generateMonitorName()">Generate</button>	<br>	<br>	<br>	<a href="https://www.halopedia.org/Monitor" class="muted">wtf is a monitor?</a></body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <style type="text/css">
+            .monitor-name {{ text-transform: capitalize; }}
+            body {{ background-color: #000; color: #fff; text-align: center; }}
+            .muted {{ color: #2bc7ca; }}
+        </style>
+    </head>
+    <body>
+        <img src="https://www.halopedia.org/images/d/d5/Abject_Testament.jpg" alt="" width="200" height="150">	
+        <h1 class="monitor-name">{name}</h1>
+        <button onclick="javascript:document.location.reload()">Generate</button>	<br>	<br>	<br>	
+        <a href="https://www.halopedia.org/Monitor" class="muted">wtf is a monitor?</a>
+    </body>
 </html>
+
 """
 run(host="localhost", port=8080, debug=True)
-js = '''
-
-function generateMonitorName()
-{
-  var num = Math.floor(Math.random() * 1000) + 1;
-  var rand_math = math[Math.floor(Math.random() * math.length)];
-  var rand_emotion = emotion[Math.floor(Math.random() * emotion.length)];
-
-  document.getElementsByClassName('monitor-name')[0].innerHTML = num + ' ' + rand_emotion + ' ' + rand_math;
-}
-'''
