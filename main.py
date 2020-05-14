@@ -370,9 +370,6 @@ def page():
             body {{ background-color: #000; color: #fff; text-align: center; }}
             .muted {{ color: #2bc7ca; }}
         </style>
-<script>
-function
-</script>
     </head>
     <body>
         <img src="https://www.halopedia.org/images/d/d5/Abject_Testament.jpg" alt="" width="200" height="150">	
